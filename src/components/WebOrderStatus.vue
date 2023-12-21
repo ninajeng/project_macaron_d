@@ -1,0 +1,168 @@
+<template>
+  <WebLoading :is-loading="isLoading"></WebLoading>
+  <div v-if="order.user">
+    <div
+      class="alert alert-danger rounded-0 border-0 d-flex"
+      v-if="!order.is_paid"
+    >
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>
+      <p class="mb-0">訂單尚未完成，請完成付款手續</p>
+    </div>
+    <div class="alert alert-success rounded-0 border-0 d-flex" v-else>
+      <i class="bi bi-check-circle me-2"></i>
+      <p class="mb-0">
+        訂單已成立！{{
+          order.user.address.indexOf('門市取貨') > -1
+            ? '商品將於七個工作天內完成，我們將與您聯繫確認取貨日期。'
+            : '商品將於七個工作天內送達。'
+        }}
+      </p>
+    </div>
+    <div
+      class="container p-4 bg-light text-secondary"
+      :class="{
+        'mb-3': !order.is_paid,
+        rounded: !order.is_paid,
+        'bg-secondary-subtle': !order.is_paid,
+        'border-secondary': !order.is_paid,
+        border: !order.is_paid
+      }"
+    >
+      <div class="row g-2 g-sm-3">
+        <div
+          class="col-12 border-secondary border-bottom pb-3"
+          v-if="!order.is_paid"
+        >
+          <h5 class="fw-bolder">選擇付款方式</h5>
+          <div class="input-group">
+            <select class="form-select">
+              <option value="線上刷卡">線上刷卡</option>
+              <option value="ATM轉帳">ATM轉帳</option>
+              <option value="門市付款">
+                {{
+                  order.user.address.indexOf('門市取貨') > -1
+                    ? '門市取貨付款'
+                    : '門市付款'
+                }}
+              </option>
+            </select>
+            <button class="btn btn-secondary" type="button" @click="payment">
+              付款
+            </button>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <h5 class="fw-bolder mb-0 mt-2 mt-sm-0">訂單狀態</h5>
+        </div>
+        <div class="col-sm-8">
+          <p class="mb-0">{{ order.is_paid ? '訂單已成立' : '尚未付款' }}</p>
+        </div>
+        <div class="col-sm-4">
+          <h5 class="fw-bolder mt-2 mt-sm-0 mb-0">訂購人資料</h5>
+        </div>
+        <div class="col-sm-8">
+          <p class="mb-1">{{ order.user.name }}</p>
+          <p class="mb-1">{{ order.user.tel }}</p>
+          <p class="mb-1">{{ order.user.email }}</p>
+          <p class="mb-0" :class="{ 'mb-1': order.message }">
+            {{ order.user.address }}
+          </p>
+          <p class="mb-0" style="text-align: justify;" v-if="order.message">
+            訂單備註："{{ order.message }}"
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      order: {},
+      orderProducts: {},
+      orderId: '',
+      isLoading: false
+    }
+  },
+  inject: ['emitter'],
+  emits: ['orderData', 'getError'],
+  props: ['isSearch'],
+  methods: {
+    getOrder(id) {
+      const API_GETORDER = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${id}`
+      this.isLoading = true
+      this.axios
+        .get(API_GETORDER)
+        .then((res) => {
+          this.isLoading = false
+          if (res.data.success) {
+            if (res.data.order.is_paid && this.$route.name !== 'complete') {
+              this.$router.push(`/order/complete/${id}`)
+            } else if (
+              !res.data.order.is_paid &&
+              this.$route.name !== 'payment'
+            ) {
+              this.$router.push(`/order/payment/${id}`)
+            }
+            this.order = res.data.order
+            this.orderProducts.carts = Object.values(res.data.order.products)
+            this.orderProducts.final_total = res.data.order.total
+            this.orderProducts.total = this.orderProducts.carts.reduce(
+              (acc, cur) => {
+                acc += cur.total
+                return acc
+              },
+              0
+            )
+            this.$emit('orderData', this.orderProducts)
+          } else {
+            this.getOrderFail()
+          }
+        })
+        .catch(() => {
+          this.isLoading = false
+          this.getOrderFail()
+        })
+    },
+    getOrderFail() {
+      if (this.isSearch) {
+        this.$emit('getError')
+      } else {
+        this.emitter.emit('sendMsg', {
+          message: '無此訂單',
+          status: 'error'
+        })
+        this.$router.replace('/cart')
+      }
+    },
+    payment() {
+      const API_PAY = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${this.$route.params.id}`
+      this.isLoading = true
+      this.axios
+        .post(API_PAY)
+        .then((res) => {
+          this.isLoading = false
+          if (res.data.success) {
+            this.$router.push(`/order/complete/${this.$route.params.id}`)
+          } else {
+            this.emitter.emit('sendMsg', {
+              message: '付款失敗，請聯繫店家',
+              status: 'error'
+            })
+          }
+        })
+        .catch((e) => {
+          this.isLoading = false
+          alert(e)
+        })
+    }
+  },
+  created() {
+    if (!this.isSearch) {
+      this.getOrder(this.$route.params.id)
+    }
+  }
+}
+</script>

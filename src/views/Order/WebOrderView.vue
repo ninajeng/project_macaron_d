@@ -1,0 +1,46 @@
+<template>
+  <div class="mt-5">
+    <CartInfo @updateInfo="updateInfo"></CartInfo>
+    <CheckStep :step="step" v-if="step < 4"></CheckStep>
+    <router-view :cart-info="cartInfo" v-if="getDataComplete"></router-view>
+  </div>
+</template>
+
+<script>
+import CheckStep from '@/components/WebOrderCheckStep.vue'
+import CartInfo from '@/components/WebCartInfo.vue'
+export default {
+  data() {
+    return {
+      cartInfo: {},
+      getDataComplete: false,
+      stepArr: ['check', 'purchaserData', 'payment', 'complete'],
+      step: 3
+    }
+  },
+  components: {
+    CartInfo,
+    CheckStep
+  },
+  methods: {
+    updateInfo(data) {
+      this.cartInfo = data
+    }
+  },
+  watch: {
+    cartInfo() {
+      if (
+        this.step < 2 &&
+        this.cartInfo.carts &&
+        this.cartInfo.carts.length < 1
+      ) {
+        this.$router.replace('/cart')
+      } else this.getDataComplete = true
+    }
+  },
+  updated() {
+    if (this.$route.path === '/order') this.$router.replace('/order/check')
+    this.step = this.stepArr.indexOf(this.$route.name) + 1
+  }
+}
+</script>
