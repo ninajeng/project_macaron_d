@@ -53,7 +53,6 @@ export default {
   methods: {
     getOrder(data) {
       this.orderProducts = data
-      // console.log(data)
       this.getOrderComplete = true
     }
   }
