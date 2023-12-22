@@ -25,22 +25,29 @@ export default {
   methods: {
     updateInfo(data) {
       this.cartInfo = data
+    },
+    setStep() {
+      this.step = this.stepArr.indexOf(this.$route.name) + 1
     }
   },
   watch: {
     cartInfo() {
       if (
-        this.step < 2 &&
+        this.step < 3 &&
         this.cartInfo.carts &&
         this.cartInfo.carts.length < 1
       ) {
         this.$router.replace('/cart')
-      } else this.getDataComplete = true
+      } else {
+        this.getDataComplete = true
+      }
     }
   },
   updated() {
-    if (this.$route.path === '/order') this.$router.replace('/order/check')
-    this.step = this.stepArr.indexOf(this.$route.name) + 1
+    this.setStep()
+  },
+  created() {
+    this.setStep()
   }
 }
 </script>

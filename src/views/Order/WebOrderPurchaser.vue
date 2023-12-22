@@ -3,7 +3,7 @@
   <div class="container py-5">
     <div
       class="row flex-column-reverse flex-lg-row justify-content-lg-evenly"
-      v-if="cartInfo.carts[0].product"
+      v-if="cartInfo.carts[0]?.product"
     >
       <div class="col-lg-4">
         <OrderCard :cart-info="cartInfo" :isEdit="false">
