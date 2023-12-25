@@ -107,13 +107,15 @@
               </div>
             </div>
           </div>
-          <div class="py-5 text-center" v-else>
-            <p class="d-sm-inline-block me-sm-2">尚無收藏...</p>
-            <router-link
-              to="/products"
-              class="link-secondary fw-bolder text-decoration-none border-bottom border-secondary d-sm-inline-block"
-              >查看商品<i class="bi bi-arrow-up-right"></i
-            ></router-link>
+          <div class="d-flex justify-content-center align-items-center" style="min-height: 40vh;" v-else>
+            <div>
+              <p class="d-sm-inline-block me-sm-2">尚無收藏...</p>
+              <router-link
+                to="/products"
+                class="link-secondary fw-bolder text-decoration-none border-bottom border-secondary d-sm-inline-block"
+                >查看商品<i class="bi bi-arrow-up-right"></i
+              ></router-link>
+            </div>
           </div>
         </div>
       </div>

@@ -111,6 +111,8 @@
   .navbar-brand.active {
     background-image: none;
   }
+}
+@media (min-width: 1200px) {
   .logo:hover {
     color: var(--bs-secondary);
   }

@@ -32,9 +32,8 @@
   <div class="d-flex justify-content-center mt-3 mb-4">
     <div class="me-3" style="width: 40%">
       <div class="bg-warning-subtle border border-warning p-3 rounded text-center">
-        <p class="mb-2 display-3" v-if="getDataFinish">
-          NT$
-          {{
+        <p class="mb-2 display-3 fw-bolder" v-if="getDataFinish">
+          <span class="fs-4">NT$</span>{{
             filterAllData
               ? $filters.currency(totalPrice_allOrder)
               : $filters.currency(totalPrice_finishedOrder)
