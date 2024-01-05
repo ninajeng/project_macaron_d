@@ -32,30 +32,19 @@
           >
         </li>
       </ul>
-      <div class="d-md-flex flex-wrap justify-content-center text-start">
-        <p class="me-3">
-          <span class="me-2 fw-semibold">營業時間:</span>每週二至週日
-          11:00~21:00 (周一公休)
-        </p>
-        <p class="me-3">
-          <span class="me-2 fw-semibold">地址:</span>330桃園市桃園區桃園路1號
-        </p>
-        <p class="me-3">
-          <span class="me-2 fw-semibold">電話:</span
-          ><a href="tel:+" class="text-primary-emphasis text-decoration-none"
-            >03-3344-5566</a
-          >
-        </p>
-        <p>
-          <span class="me-2 fw-semibold">Email:</span
-          ><a href="mailto:" class="text-primary-emphasis text-decoration-none"
-            >marcaron@email.com</a
-          >
-        </p>
-      </div>
+      <WebContactInfo :withIcon="false"></WebContactInfo>
       <p class="text-gray border-top border-primary mb-0 pt-3">
         本網站無商業用途，僅供練習使用
       </p>
     </div>
   </div>
 </template>
+
+<script>
+import WebContactInfo from './WebContactInfo.vue'
+export default {
+  components: {
+    WebContactInfo
+  }
+}
+</script>

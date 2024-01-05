@@ -48,7 +48,7 @@
                 >
               </div>
             </div>
-            <div class="d-flex">
+            <div class="d-lg-flex">
               <div class="me-5">
                 <label for="dueDate" class="form-label">優惠截止日期*</label>
                 <input
@@ -63,7 +63,7 @@
                   max="2123-12-31"
                 />
               </div>
-              <div>
+              <div class="mt-3 mt-lg-0">
                 <label for="dueTimeHour" class="form-label"
                   >優惠截止時間*</label
                 >

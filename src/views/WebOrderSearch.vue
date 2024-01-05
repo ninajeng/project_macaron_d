@@ -30,8 +30,8 @@
                   @keypress="checkKeypress($event, validate)"
                 ></VField>
                 <button
-                  class="btn btn-secondary rounded-0"
                   type="button"
+                  class="btn btn-secondary rounded-0"
                   @click.prevent="search(validate)"
                 >
                   <i class="bi bi-search me-2"></i>查詢

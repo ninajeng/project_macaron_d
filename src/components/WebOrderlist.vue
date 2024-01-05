@@ -58,8 +58,8 @@
           <p class="my-2">規格：{{ item.product.unit }}</p>
           <div class="input-group input-group-sm w-auto mb-2" v-if="isEdit">
             <button
-              class="btn btn-outline-secondary"
               type="button"
+              class="btn btn-outline-secondary"
               :class="{ disabled: item.qty === 1 }"
               @click="
                 cartAdjustNum(
@@ -75,8 +75,8 @@
               >{{ item.qty }}</span
             >
             <button
-              class="btn btn-outline-secondary"
               type="button"
+              class="btn btn-outline-secondary"
               :class="{ disabled: item.qty === 10 }"
               @click="
                 cartAdjustNum(

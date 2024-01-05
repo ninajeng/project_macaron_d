@@ -42,7 +42,7 @@
                   type="email"
                   class="form-control"
                   :class="{ 'is-invalid': errors['email'] }"
-                  placeholder="請輸入 Email"
+                  placeholder="請輸入 E-mail"
                   rules="email|required"
                   v-model="purchaser.email"
                 ></VField>

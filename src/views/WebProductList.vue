@@ -1,13 +1,13 @@
 <template>
   <WebLoading :is-loading="isLoading"></WebLoading>
   <div class="container my-5">
-    <div class="row justify-content-between gx-5">
+    <div class="row justify-content-between">
       <div class="col-lg-3">
         <ProductCategory
           :categories="categories"
           :filter="filter"
           @set-filter="setFilter"
-          class="sticky-sm-top"
+          class="sticky-sm-top pe-lg-2"
           style="top: 110px; z-index: 1"
         ></ProductCategory>
       </div>
@@ -21,7 +21,7 @@
             >
           </p>
         </div>
-        <div class="row row-cols-1 row-cols-lg-3 g-3">
+        <div class="row row-cols-1 row-cols-lg-3 g-3" v-else>
           <div
             class="col"
             v-for="(product, key) in filterData"

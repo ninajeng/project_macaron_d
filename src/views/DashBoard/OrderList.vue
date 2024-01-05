@@ -10,51 +10,53 @@
   <div class="pt-4 py-3">
     <h2 class="m-0 text-secondary fw-bolder">訂單列表</h2>
   </div>
-  <table class="table table-hover align-middle">
-    <thead>
-      <tr>
-        <th>訂單日期</th>
-        <th>訂單編號</th>
-        <th>訂單狀態</th>
-        <th>訂購人</th>
-        <th>使用優惠券</th>
-        <th class="text-end">訂單金額</th>
-        <th width="250" class="text-center">查看內容/刪除</th>
-      </tr>
-    </thead>
-    <tbody v-if="orderList.length > 0">
-      <tr v-for="(order, key) in orderList" :key="'order' + key">
-        <td>{{ this.$filters.unixToDate(order.create_at) }}</td>
-        <td>{{ order.id }}</td>
-        <td :class="{'text-danger': !order.is_paid}">{{ order.is_paid ? '訂單已完成' : '尚未付款' }}</td>
-        <td>{{ order.user.name }}</td>
-        <td>{{ Object.values(order.products)[0].coupon ? Object.values(order.products)[0].coupon.title: '無' }}</td>
-        <td class="text-end">{{ `$${$filters.currency(order.total)}` }}</td>
-        <td class="text-center">
-          <div
-            class="btn-group btn-group-sm"
-            role="group"
-            aria-label="Basic example"
-          >
-            <button
-              type="button"
-              class="btn btn-outline-success"
-              @click="editOrder(order)"
+  <div class="overflow-x-auto mb-3">
+    <table class="table table-hover align-middle text-nowrap">
+      <thead>
+        <tr>
+          <th>訂單日期</th>
+          <th>訂單編號</th>
+          <th>訂單狀態</th>
+          <th>訂購人</th>
+          <th>使用優惠券</th>
+          <th class="text-end">訂單金額</th>
+          <th width="250" class="text-center">查看內容/刪除</th>
+        </tr>
+      </thead>
+      <tbody v-if="orderList.length > 0">
+        <tr v-for="(order, key) in orderList" :key="'order' + key">
+          <td>{{ this.$filters.unixToDate(order.create_at) }}</td>
+          <td>{{ order.id }}</td>
+          <td :class="{'text-danger': !order.is_paid}">{{ order.is_paid ? '訂單已完成' : '尚未付款' }}</td>
+          <td>{{ order.user.name }}</td>
+          <td>{{ Object.values(order.products)[0].coupon ? Object.values(order.products)[0].coupon.title: '無' }}</td>
+          <td class="text-end">{{ `$${$filters.currency(order.total)}` }}</td>
+          <td class="text-center">
+            <div
+              class="btn-group btn-group-sm"
+              role="group"
+              aria-label="Basic example"
             >
-            查看內容
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-danger"
-              @click="deleteConfirm(order)"
-            >
-              刪除
-            </button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                @click="editOrder(order)"
+              >
+              查看內容
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                @click="deleteConfirm(order)"
+              >
+                刪除
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <pagination :page-info="pageInfo" @set-page="getOrderList"></pagination>
 </template>
 

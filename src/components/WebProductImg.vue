@@ -24,6 +24,7 @@
       v-if="product.imagesUrl"
     >
       <button
+        type="button"
         class="btn btn-outline-secondary rounded-0 flex-fill"
         style="min-width: 100px"
         @click="showImage = product.imageUrl"
@@ -36,6 +37,7 @@
         />
       </button>
       <button
+        type="button"
         v-for="(img, key) in product.imagesUrl"
         :key="'img' + key"
         class="btn btn-outline-secondary rounded-0 border-start-0 flex-fill"

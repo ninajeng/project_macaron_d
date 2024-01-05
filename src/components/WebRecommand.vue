@@ -20,59 +20,10 @@
           v-for="(product, key) in showData"
           :key="'showData' + key"
         >
-          <div class="card border-0" v-if="classicType">
-            <img
-              :src="product.imageUrl"
-              class="card-img productImg"
-              :alt="product.title"
-              style="height: 300px; object-fit: cover"
-            />
-            <div class="position-absolute bottom-0">
-              <p
-                class="fs-6 ms-3 badge rounded-pill text-bg-primary"
-                v-if="product.category === '期間限定'"
-              >
-                期間限定
-              </p>
-              <p
-                class="fs-6 ms-3 badge rounded-pill text-bg-secondary"
-                v-else-if="product.origin_price !== product.price"
-              >
-                特價
-                {{ Math.floor((product.price / product.origin_price) * 10) }} 折
-              </p>
-            </div>
-            <div class="card-img-overlay p-0">
-              <div
-                class="d-flex justify-content-center align-items-center rounded py-3 d-lg-none"
-                style="
-                  background: linear-gradient(
-                    rgba(41, 41, 43, 0.5) 20%,
-                    transparent
-                  );
-                "
-              >
-                <p class="fw-bolder text-white px-2 fs-5 text-center">
-                  {{ product.title }}
-                </p>
-              </div>
-              <router-link
-                :to="`/product/${product.id}`"
-                class="stretched-link productLink"
-              ></router-link>
-              <div
-                class="h-100 d-none d-lg-flex flex-column justify-content-center align-items-center rounded productTitle"
-                style="background-color: rgba(41, 41, 43, 0.5)"
-              >
-                <p class="fw-bolder text-white px-3 fs-5 text-center mb-5">
-                  {{ product.title }}
-                </p>
-                <p class="fw-bolder text-white fs-5 linkIcon">
-                  <i class="bi bi-search"></i>
-                </p>
-              </div>
-            </div>
-          </div>
+          <ProductCardClassic
+            :product="product"
+            :height="'300px'" v-if="classicType"
+          ></ProductCardClassic>
 
           <ProductCard
             :product="product"
@@ -104,11 +55,13 @@
 
 <script>
 import ProductCard from './WebProductCard.vue'
+import ProductCardClassic from '@/components/WebProductCard-classic.vue'
 export default {
   data() {
     return {
       allData: [],
       showData: [],
+      index: 0,
       isLoading: false
     }
   },
@@ -116,7 +69,8 @@ export default {
   props: ['num', 'bgColor', 'isRandom', 'classicType'],
   emits: ['addCart'],
   components: {
-    ProductCard
+    ProductCard,
+    ProductCardClassic
   },
   methods: {
     getData() {
@@ -145,11 +99,15 @@ export default {
       })
     },
     setShowData() {
-      let index = 0
+      let random = 0
       if (this.isRandom) {
-        index = Math.floor(Math.random() * (this.allData.length - this.num))
+        random = this.index
+        while (random === this.index) {
+          random = Math.floor(Math.random() * (this.allData.length - this.num))
+        }
       }
-      this.showData = this.allData.slice(index, index + this.num)
+      this.index = random
+      this.showData = this.allData.slice(this.index, this.index + this.num)
     },
     addCart(data) {
       this.$emit('addCart', data)

@@ -51,7 +51,7 @@
       </div>
     </div>
   </div>
-  <WebRecommand :num="4" :bgColor="true" :isRandom="true" :classicType="false">
+  <WebRecommand :num="4" :bgColor="true" :isRandom="true" :classicType="false" ref="recommand">
     <template #title>猜你喜歡</template>
   </WebRecommand>
 </template>
@@ -132,6 +132,7 @@ export default {
     if (this.productId !== this.$route.params.id) {
       this.getInfo()
       this.$refs.productInfo.setQty(1)
+      this.$refs.recommand.setShowData()
     }
   }
 }

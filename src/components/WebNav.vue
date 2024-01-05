@@ -4,14 +4,14 @@
     <div class="container">
       <div class="navbar navbar-expand-lg align-items-baseline">
         <div class="d-flex align-items-baseline">
-          <router-link class="navbar-brand me-2" to="/home"
+          <router-link class="navbar-brand me-2" to="/home" @click="closeNav"
             ><h1 class="m-0 fs-3 logo">
               macar<i class="bi bi-egg-fill"></i>n
             </h1></router-link
           >
           <p class="m-0 fw-bolder d-none d-sm-block title">頂級法式馬卡龍</p>
         </div>
-        <button class="navbar-toggler" type="button" @click="toggleCollapse">
+        <button type="button" class="navbar-toggler" @click="toggleCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" ref="navbarNav">
@@ -21,9 +21,17 @@
             <li class="nav-item mx-2">
               <router-link
                 class="nav-link ps-2 ps-lg-0 my-2 my-lg-0"
+                to="/about"
+                @click="closeNav"
+                ><i class="bi bi-house-heart-fill me-1"></i>關於我們</router-link
+              >
+            </li>
+            <li class="nav-item mx-2">
+              <router-link
+                class="nav-link ps-2 ps-lg-0 my-2 my-lg-0"
                 to="/products"
                 @click="closeNav(true)"
-                ><i class="bi bi-list-task me-1"></i>產品列表</router-link
+                ><i class="bi bi-list-task me-1"></i>選產品</router-link
               >
             </li>
             <li class="nav-item mx-2">
@@ -62,8 +70,8 @@
     ref="toTop"
   >
     <button
-      class="btn btn-sm btn-primary h-100 w-100 text-white"
       type="button"
+      class="btn btn-sm btn-primary h-100 w-100 text-white"
       @click="scrollToTop"
     >
       TOP
@@ -333,7 +341,6 @@ export default {
       if (window.scrollY !== 0) {
         this.$refs.webNav.classList.add('shadow')
         this.$refs.toTop.classList.remove('opacity-0')
-        // document.activeElement.blur()
       } else {
         this.$refs.webNav.classList.remove('shadow')
         this.$refs.toTop.classList.add('opacity-0')

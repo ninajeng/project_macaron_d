@@ -25,8 +25,8 @@
         >
           <h2 class="accordion-header" v-if="step === key + 1">
             <button
-              class="accordion-button rounded-0 fw-bolder"
               type="button"
+              class="accordion-button rounded-0 fw-bolder"
               data-bs-toggle="collapse"
               data-bs-target="#collapseStep"
             >

@@ -42,7 +42,7 @@
             placeholder="輸入關鍵字，如巧克力"
             ref="searchInput"
           />
-          <button class="btn btn-primary" type="button" @click="search()">
+          <button type="button" class="btn btn-primary" @click="search()">
             <i class="bi bi-search me-1"></i>
           </button>
         </div>

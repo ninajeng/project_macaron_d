@@ -14,40 +14,43 @@
         <p class="m-0 d-none d-sm-block text-white">後台管理</p>
       </div>
       <button
-        class="navbar-toggler"
         type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
+        class="navbar-toggler"
+        @click="toggleCollapse"
         v-if="isLogin"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav" v-if="isLogin">
+      <div class="collapse navbar-collapse" ref="navbarNav" v-if="isLogin">
         <ul class="navbar-nav d-flex w-100 justify-content-end">
           <li class="nav-item mx-2">
             <router-link class="nav-link" to="/dashboard/salesReport"
+              @click="closeNav"
               >銷售統計</router-link
             >
           </li>
           <li class="nav-item mx-2">
             <router-link class="nav-link" to="/dashboard/products"
+              @click="closeNav"
               >產品列表</router-link
             >
           </li>
           <li class="nav-item mx-2">
             <router-link class="nav-link" to="/dashboard/coupons"
+              @click="closeNav"
               >優惠券列表</router-link
             >
           </li>
           <li class="nav-item mx-2">
             <router-link class="nav-link" to="/dashboard/orders"
+              @click="closeNav"
               >訂單列表</router-link
             >
           </li>
         </ul>
         <button
-          class="btn btn-sm btn-outline-light text-nowrap ms-2"
           type="button"
+          class="btn btn-sm btn-outline-light text-nowrap ms-2"
           @click="logout"
         >
           登出
@@ -73,7 +76,14 @@ export default {
   },
   props: ['isLogin'],
   methods: {
+    toggleCollapse() {
+      this.$refs.navbarNav.classList.toggle('show')
+    },
+    closeNav() {
+      this.$refs.navbarNav.classList.remove('show')
+    },
     logout() {
+      this.$refs.navbarNav.classList.remove('show')
       this.isLoading = true
       const API_LOGOUT = `${process.env.VUE_APP_API}logout`
       this.axios

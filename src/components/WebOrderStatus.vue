@@ -46,7 +46,7 @@
                 }}
               </option>
             </select>
-            <button class="btn btn-secondary" type="button" @click="payment">
+            <button type="button" class="btn btn-secondary" @click="payment">
               付款
             </button>
           </div>

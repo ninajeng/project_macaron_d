@@ -10,10 +10,10 @@
           <button type="button" class="btn-close" @click="hideModal"></button>
         </div>
         <div class="modal-body">
-          <div class="row">
-            <div class="col-4">
+          <div class="row flex-column-reverse flex-md-row">
+            <div class="col-lg-4">
               <div class="mb-3">
-                <p>產品主要圖片</p>
+                <p class="mb-2 fw-semibold">產品主要圖片</p>
                 <div v-if="product.imageUrl">
                   <img
                     :src="product.imageUrl"
@@ -64,7 +64,7 @@
               </div>
               <hr />
               <div v-for="(url, key) in product.imagesUrl" :key="'url' + key">
-                <p>產品其他圖片 - {{ key + 1 }}</p>
+                <p class="mb-2 fw-semibold">產品其他圖片 - {{ key + 1 }}</p>
                 <div v-if="url">
                   <img
                     :src="url"
@@ -145,9 +145,9 @@
                 </button>
               </div>
             </div>
-            <div class="col-8">
+            <div class="col-lg-8">
               <div class="mb-3">
-                <label for="title" class="form-label">標題*</label>
+                <label for="title" class="form-label fw-semibold">標題*</label>
                 <input
                   type="text"
                   name="title"
@@ -161,7 +161,7 @@
               <div class="mb-3">
                 <div class="row">
                   <div class="col">
-                    <label for="category" class="form-label">分類*</label>
+                    <label for="category" class="form-label fw-semibold">分類*</label>
                     <input
                       type="text"
                       name="category"
@@ -173,7 +173,7 @@
                     />
                   </div>
                   <div class="col">
-                    <label for="unit" class="form-label">單位*</label>
+                    <label for="unit" class="form-label fw-semibold">單位*</label>
                     <input
                       type="text"
                       name="unit"
@@ -189,7 +189,7 @@
               <div class="mb-4">
                 <div class="row">
                   <div class="col">
-                    <label for="origin_price" class="form-label">原價*</label>
+                    <label for="origin_price" class="form-label fw-semibold">原價*</label>
                     <input
                       type="num"
                       name="origin_price"
@@ -201,7 +201,7 @@
                     />
                   </div>
                   <div class="col">
-                    <label for="price" class="form-label">售價*</label>
+                    <label for="price" class="form-label fw-semibold">售價*</label>
                     <input
                       type="num"
                       name="price"
@@ -216,7 +216,7 @@
               </div>
               <hr />
               <div class="mb-3">
-                <label for="description" class="form-label">產品描述</label>
+                <label for="description" class="form-label fw-semibold">產品描述</label>
                 <textarea
                   name="description"
                   id="description"
@@ -227,7 +227,7 @@
                 ></textarea>
               </div>
               <div class="mb-3">
-                <label for="content" class="form-label">說明內容</label>
+                <label for="content" class="form-label fw-semibold">說明內容</label>
                 <textarea
                   name="content"
                   id="content"
@@ -246,10 +246,11 @@
                   v-model="product.is_enabled"
                   :checked="product.is_enabled === 1"
                 />
-                <label for="is_enabled" class="form-check-label"
+                <label for="is_enabled" class="form-check-label fw-semibold"
                   >是否啟用*</label
                 >
               </div>
+              <hr />
             </div>
           </div>
         </div>

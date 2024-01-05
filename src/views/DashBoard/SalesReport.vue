@@ -1,6 +1,9 @@
 <template>
   <LoadingVue :active="isLoading" style="z-index: 1056"></LoadingVue>
-  <div class="ps-4 pt-3 pb-2 sticky-sm-top bg-light border-bottom border-3" style="z-index: 1;">
+  <div
+    class="ps-4 pt-3 pb-2 sticky-sm-top bg-light border-bottom border-3"
+    style="z-index: 1"
+  >
     <h2 class="text-secondary fw-bolder">銷售統計</h2>
     <p class="mb-0">
       統計數據：{{
@@ -12,28 +15,31 @@
     <div class="d-flex align-items-center py-2">
       <p class="mb-0">資料篩選：</p>
       <button
+        type="button"
         class="btn btn-sm btn-orange me-2"
         :class="{ disabled: filterAllData }"
-        type="button"
         @click="setFilter(true)"
       >
         全部訂單
       </button>
       <button
+        type="button"
         class="btn btn-sm btn-orange"
         :class="{ disabled: !filterAllData }"
-        type="button"
         @click="setFilter(false)"
       >
         已完成的訂單
       </button>
     </div>
   </div>
-  <div class="d-flex justify-content-center mt-3 mb-4">
-    <div class="me-3" style="width: 40%">
-      <div class="bg-warning-subtle border border-warning p-3 rounded text-center">
+  <div class="d-lg-flex justify-content-center mt-3 mb-4">
+    <div class="leftZone">
+      <div
+        class="bg-warning-subtle border border-warning mx-2 p-3 rounded text-center"
+      >
         <p class="mb-2 display-3 fw-bolder" v-if="getDataFinish">
-          <span class="fs-4">NT$</span>{{
+          <span class="fs-4">NT$</span
+          >{{
             filterAllData
               ? $filters.currency(totalPrice_allOrder)
               : $filters.currency(totalPrice_finishedOrder)
@@ -41,19 +47,24 @@
         </p>
         <p class="fs-4 mb-0 text-primary-emphasis">銷售總額</p>
       </div>
-      <div class="bg-white mt-3 p-3 rounded d-flex flex-column">
+      <div class="bg-white mt-3 mx-2 p-3 rounded d-flex flex-column overflow-x-auto">
         <p class="fs-4 text-primary-emphasis">訂單使用優惠券比例</p>
-        <div class="couponPieChart align-self-center"></div>
+        <div class="chartZone couponPieChart align-self-center"></div>
       </div>
-      <div class="bg-white mt-3 p-3 rounded d-flex flex-column">
+      <div class="bg-white mt-3 mx-2 p-3 rounded d-flex flex-column overflow-x-auto">
         <p class="fs-4 text-primary-emphasis">訂單配送方式</p>
-        <div class="deliveryPieChart align-self-center"></div>
+        <div class="chartZone deliveryPieChart align-self-center"></div>
       </div>
     </div>
-    <div style="width: 55%">
-      <div class="bg-white p-3 rounded">
-        <p class="fs-4 text-primary-emphasis mb-1">產品銷售排名<span class="ms-2 fs-6">({{ rankNum > 10 ? '全部排名' : `前${rankNum}名` }})</span></p>
+    <div class="rightZone">
+      <div class="bg-white mt-3 mt-lg-0 mx-2 p-3 rounded overflow-x-auto">
+        <p class="fs-4 text-primary-emphasis mb-1">
+          產品銷售排名<span class="ms-2 fs-6"
+            >({{ rankNum > 10 ? '全部排名' : `前${rankNum}名` }})</span
+          >
+        </p>
         <button
+          type="button"
           class="btn btn-sm btn-secondary me-2"
           :class="{
             disabled:
@@ -62,32 +73,31 @@
                 ? this.saleItem_allOrder.length
                 : this.saleItem_finishedOrder.length)
           }"
-          type="button"
           @click="setRankNum(-1)"
         >
           全部排名
         </button>
         <button
+          type="button"
           class="btn btn-sm btn-secondary me-2"
           :class="{ disabled: rankNum === 10 }"
-          type="button"
           @click="setRankNum(10)"
         >
           前10名
         </button>
         <button
+          type="button"
           class="btn btn-sm btn-secondary me-2"
           :class="{ disabled: rankNum === 5 }"
-          type="button"
           @click="setRankNum(5)"
         >
           前5名
         </button>
         <div class="rankBarChart"></div>
       </div>
-      <div class="bg-white mt-3 p-3 rounded d-flex flex-column">
+      <div class="bg-white mt-3 mx-2 p-3 rounded d-flex flex-column overflow-x-auto">
         <p class="fs-4 text-primary-emphasis">產品種類銷售比例</p>
-        <div class="categoryPieChart align-self-center"></div>
+        <div class="chartZone categoryPieChart align-self-center"></div>
       </div>
     </div>
   </div>
@@ -104,9 +114,20 @@ text {
 .c3-legend-item text {
   font-size: 1rem;
 }
-body{
+body {
   background: var(--bs-light);
   color: #4a5759;
+}
+@media (min-width: 992px){
+  .leftZone {
+      width: 40%;
+  }
+  .rightZone {
+      width: 55%;
+  }
+  .chartZone {
+      width: 80%;
+  }
 }
 </style>
 

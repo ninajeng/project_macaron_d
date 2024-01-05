@@ -3,26 +3,26 @@
     <nav>
       <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
         <button
+          type="button"
           class="nav-link link-secondary border-bottom-0 border-secondary active"
           data-bs-toggle="tab"
           data-bs-target="#info-spec"
-          type="button"
         >
           產品規格
         </button>
         <button
+          type="button"
           class="nav-link link-secondary border-bottom-0 border-secondary"
           data-bs-toggle="tab"
           data-bs-target="#info-store"
-          type="button"
         >
           保存方法
         </button>
         <button
+          type="button"
           class="nav-link link-secondary border-bottom-0 border-secondary"
           data-bs-toggle="tab"
           data-bs-target="#info-delivery"
-          type="button"
         >
           取貨方式
         </button>

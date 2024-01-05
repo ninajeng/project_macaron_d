@@ -15,6 +15,7 @@
       v-if="bannerImages.length > 1"
     >
       <button
+        type="button"
         class="btn btn-light rounded-0 h-100 d-none d-md-block carousel-btn"
         @click="changeIndex(index - 1)"
       >
@@ -48,6 +49,7 @@
         </div>
         <div class="d-flex justify-content-center mt-auto">
           <button
+            type="button"
             class="btn btn-sm btn-light rounded-1 opacity-25 mx-1 mb-3"
             :class="{ 'opacity-50': index === key }"
             style="width: 40px"
@@ -59,6 +61,7 @@
       </div>
 
       <button
+        type="button"
         class="btn btn-light rounded-0 h-100 d-none d-md-block carousel-btn"
         @click="changeIndex(index + 1)"
       >

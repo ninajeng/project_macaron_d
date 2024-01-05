@@ -18,6 +18,14 @@ const routes = [
         component: () => import('../views/WebHome.vue')
       },
       {
+        path: 'about',
+        name: 'about',
+        component: () => import('../views/WebAbout.vue'),
+        meta: {
+          title: `${webName} - 關於我們`
+        }
+      },
+      {
         path: 'products',
         name: 'products',
         component: () => import('../views/WebProductList.vue'),

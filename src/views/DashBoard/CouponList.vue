@@ -22,56 +22,58 @@
       新增優惠券
     </button>
   </div>
-  <table class="table table-hover align-middle">
-    <thead class="border-dark">
-      <tr>
-        <th>優惠券代碼</th>
-        <th>優惠券名稱</th>
-        <th class="text-center">折扣內容</th>
-        <th>優惠截止時間</th>
-        <th>優惠券狀態</th>
-        <th width="150" class="text-center">編輯/刪除</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(coupon, key) in couponList" :key="'coupon' + key">
-        <td>{{ coupon.code }}</td>
-        <td>{{ coupon.title }}</td>
-        <td class="text-center">{{ `${coupon.percent / 10}折` }}</td>
-        <td>{{ $filters.unixToDatetime(coupon.due_date) }}</td>
-        <td :class="checkStatus(coupon) ? 'text-success' : 'text-gray'">
-          <i class="bi bi-check fw-bolder" v-if="checkStatus(coupon)"></i>
-          <i class="bi bi-x" v-else></i>
-          <span class="text-danger" v-if="coupon.due_date < Date.now().toString().substring(0, 10)">已過期</span>
-          <span v-else>尚未過期</span>,
-          <span class="text-danger" v-if="!coupon.is_enabled">未啟用</span>
-          <span v-else>啟用</span>
-        </td>
-        <td class="text-center">
-          <div
-            class="btn-group btn-group-sm"
-            role="group"
-            aria-label="Basic example"
-          >
-            <button
-              type="button"
-              class="btn btn-outline-success"
-              @click="editCoupon(coupon)"
+  <div class="overflow-x-auto mb-3">
+    <table class="table table-hover align-middle text-nowrap">
+      <thead class="border-dark">
+        <tr>
+          <th>優惠券代碼</th>
+          <th>優惠券名稱</th>
+          <th class="text-center">折扣內容</th>
+          <th>優惠截止時間</th>
+          <th>優惠券狀態</th>
+          <th width="150" class="text-center">編輯/刪除</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(coupon, key) in couponList" :key="'coupon' + key">
+          <td>{{ coupon.code }}</td>
+          <td>{{ coupon.title }}</td>
+          <td class="text-center">{{ `${coupon.percent / 10}折` }}</td>
+          <td>{{ $filters.unixToDatetime(coupon.due_date) }}</td>
+          <td :class="checkStatus(coupon) ? 'text-success' : 'text-gray'">
+            <i class="bi bi-check fw-bolder" v-if="checkStatus(coupon)"></i>
+            <i class="bi bi-x" v-else></i>
+            <span class="text-danger" v-if="coupon.due_date < Date.now().toString().substring(0, 10)">已過期</span>
+            <span v-else>尚未過期</span>,
+            <span class="text-danger" v-if="!coupon.is_enabled">未啟用</span>
+            <span v-else>啟用</span>
+          </td>
+          <td class="text-center">
+            <div
+              class="btn-group btn-group-sm"
+              role="group"
+              aria-label="Basic example"
             >
-              編輯
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-danger"
-              @click="deleteConfirm(coupon)"
-            >
-              刪除
-            </button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                @click="editCoupon(coupon)"
+              >
+                編輯
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                @click="deleteConfirm(coupon)"
+              >
+                刪除
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
   <pagination :page-info="pageInfo" @set-page="getCoupon"></pagination>
 </template>
 

@@ -64,8 +64,8 @@
     <div class="d-flex flex-column flex-md-row">
       <div class="input-group me-md-3 mb-3 mb-md-0 w-100">
         <button
-          class="btn btn-outline-secondary"
           type="button"
+          class="btn btn-outline-secondary"
           @click="qty -= 1"
           :class="{ disabled: qty === 1 }"
         >
@@ -78,8 +78,8 @@
           @change="checkNum"
         />
         <button
-          class="btn btn-outline-secondary"
           type="button"
+          class="btn btn-outline-secondary"
           @click="qty++"
           :class="{ disabled: qty === 10 }"
         >

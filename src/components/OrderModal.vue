@@ -7,8 +7,8 @@
           <h1 class="modal-title fs-5 text-white">訂單內容</h1>
           <button type="button" class="btn-close" @click="hideModal"></button>
         </div>
-        <div class="modal-body" v-if="order.user">
-          <div class="m-3 p-3 bg-secondary-subtle rounded">
+        <div class="modal-body text-nowrap" v-if="order.user">
+          <div class="m-3 p-3 bg-secondary-subtle rounded overflow-x-auto">
             <h5 class="fw-bolder text-secondary">訂單總覽</h5>
             <div class="d-flex mb-1">
               <div class="me-5">
@@ -79,7 +79,7 @@
               </tbody>
             </table>
           </div>
-          <div class="m-3 p-3 bg-secondary-subtle rounded">
+          <div class="m-3 p-3 bg-secondary-subtle rounded overflow-x-auto">
             <h5 class="fw-bolder text-secondary">訂購品項</h5>
             <table class="table table-hover border-dark mb-2 text-center">
               <thead>
@@ -117,16 +117,16 @@
               </tbody>
             </table>
           </div>
-          <div class="m-3 p-3 bg-secondary-subtle rounded">
+          <div class="m-3 p-3 bg-secondary-subtle rounded overflow-x-auto">
             <h5 class="fw-bolder text-secondary">訂購人資料</h5>
-            <p class="mb-2">
-              <span class="fw-bolder pe-3">配送方式</span
-              >{{ order.user.address }}
-            </p>
-            <p class="mb-2">
-              <span class="fw-bolder pe-3">訂單備註</span
-              >{{ order.message ? order.message : '無' }}
-            </p>
+            <div class="d-md-flex">
+              <p class="mb-0 fw-bolder pe-3 text-nowrap">配送方式</p>
+              <p class="mb-2 text-wrap" style="text-align: justify;">{{ order.user.address }}</p>
+            </div>
+            <div class="d-md-flex">
+              <p class="mb-0 fw-bolder pe-3 text-nowrap">訂單備註</p>
+              <p class="mb-2 text-wrap" style="text-align: justify;">{{ order.message ? order.message : '無' }}</p>
+            </div>
             <table class="table border-dark mb-2 text-center">
               <thead>
                 <tr>

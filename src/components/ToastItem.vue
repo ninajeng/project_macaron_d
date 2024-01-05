@@ -18,9 +18,9 @@
       <div class="d-flex">
         <i
           v-if="toastMsg.status === 'success'"
-          class="bi bi-check-circle me-2 text-success"
+          class="bi bi-check-circle-fill me-2 text-success"
         ></i>
-        <i v-else class="bi bi-exclamation-triangle me-2 text-danger"></i>
+        <i v-else class="bi bi-exclamation-triangle-fill me-2 text-danger"></i>
         <p class="m-0" style="text-align: justify">{{ toastMsg.message }}</p>
       </div>
       <button

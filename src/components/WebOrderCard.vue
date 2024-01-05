@@ -35,7 +35,7 @@
             placeholder="輸入優惠碼"
             v-model="couponCode"
           />
-          <button class="btn btn-dark" type="button" @click="useCoupon">
+          <button type="button" class="btn btn-dark" @click="useCoupon">
             套用
           </button>
         </div>
@@ -52,7 +52,7 @@
             }}
           </p>
           <p class="mb-1 flex-fill text-end">
-            {{ $filters.currency(cartInfo.final_total - cartInfo.total) }}
+            {{ -$filters.currency(cartInfo.total - cartInfo.final_total) }}
             元
           </p>
         </div>

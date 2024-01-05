@@ -27,6 +27,7 @@
     <router-link
       :to="`/product/${product.id}`"
       class="overflow-hidden rounded-top"
+      @click="scrollTop"
     >
       <img
         :src="product.imageUrl"
@@ -39,6 +40,7 @@
       <router-link
         :to="`/product/${product.id}`"
         class="stretched-link"
+        @click="scrollTop"
       ></router-link>
       <div class="d-flex flex-column justify-content-between h-100">
         <h5 class="card-title fw-bolder">{{ product.title }}</h5>
@@ -126,6 +128,9 @@ export default {
   methods: {
     setCollect(id) {
       this.emitter.emit('setCollect', id)
+    },
+    scrollTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   },
   created() {
