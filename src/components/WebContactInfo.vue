@@ -27,7 +27,7 @@
           class="contactInfo d-flex justify-content-center"
           v-for="(data, key, index) in info"
           :key="'contactInfoWithIcon' + index"
-          data-aos="flip-right"
+          data-aos="zoom-out"
           :data-aos-duration="600 + index * 800"
         >
           <div

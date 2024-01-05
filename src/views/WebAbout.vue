@@ -1,61 +1,60 @@
 <template>
-  <div class="fixed-top w-80 h-100 aboutBackground"></div>
-  <div>
-    <div class="container">
+  <div class="container">
+    <div
+      class="row justify-content-end align-items-center text-primary-emphasis gy-0"
+      style="min-height: 90vh; text-align: justify"
+    >
       <div
-        class="row justify-content-end align-items-center text-primary-emphasis gy-0"
-        style="min-height: 90vh; text-align: justify"
+        class="col-lg-8 rounded p-3 pt-2"
+        style="
+          background-color: rgba(255, 255, 255, 0.5);
+          backdrop-filter: blur(2px);
+          box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.5);
+          transition: opacity 1s;
+        "
       >
-        <div
-          class="col-lg-8 rounded p-3 pt-2"
+        <nav
           style="
-            background-color: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(2px);
-            box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.5);
-            transition: opacity 1s;
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='%236c757d'/%3E%3C/svg%3E&#34;
+            );
           "
+          aria-label="breadcrumb"
+          class="d-block d-lg-none"
         >
-          <nav
-            style="
-              --bs-breadcrumb-divider: url(
-                &#34;data:image/svg + xml,
-                %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='%236c757d'/%3E%3C/svg%3E&#34;
-              );
-            "
-            aria-label="breadcrumb"
-            class="d-block d-lg-none"
-          >
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <router-link
-                  class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                  to="/"
-                  >首頁</router-link
-                >
-              </li>
-              <li class="breadcrumb-item active">關於我們</li>
-            </ol>
-          </nav>
-          <hr class="d-block d-lg-none mb-2" />
-          <p class="mb-2">
-            <span class="text-primary fs-2 fw-semibold mb-0 me-1"
-              >macar<i class="bi bi-egg-fill"></i>n</span
-            >是一家專注於呈現最優質甜點的馬卡龍專賣店。
-          </p>
-          <p class="mb-3">
-            我們的故事始於遠赴法國，深入探索和學習甜點的藝術和技術。在那裡，我們融合了法式烘焙傳統與創新靈感，精心學習每一種馬卡龍的獨特秘訣。回到家鄉，我們懷著熱忱與對品質的堅持，決心建立這間特色馬卡龍店。我們不僅嚴選當季的新鮮食材，更注重於每一個細節，以手工製作出最完美的馬卡龍。這不僅僅是一種烘焙，更是對甜點藝術的完美詮釋。
-          </p>
-          <p class="mb-3">
-            誠摯地邀請您加入這趟甜蜜旅程，品嚐我們每一款用心製作的馬卡龍，感受法式甜點帶來的美好和滿足。
-          </p>
-          <hr class="d-block d-lg-none" />
-          <router-link to="/products" class="btn btn-secondary"
-            >選產品<i class="bi bi-caret-right-fill"></i
-          ></router-link>
-        </div>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <router-link
+                class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                to="/"
+                >首頁</router-link
+              >
+            </li>
+            <li class="breadcrumb-item active">關於我們</li>
+          </ol>
+        </nav>
+        <hr class="d-block d-lg-none mb-2" />
+        <p class="mb-2">
+          <span class="text-primary fs-2 fw-semibold mb-0 me-1"
+            >macar<i class="bi bi-egg-fill"></i>n</span
+          >是一家專注於呈現最優質甜點的馬卡龍專賣店。
+        </p>
+        <p class="mb-3">
+          我們的故事始於遠赴法國，深入探索和學習甜點的藝術和技術。在那裡，我們融合了法式烘焙傳統與創新靈感，精心學習每一種馬卡龍的獨特秘訣。回到家鄉，我們懷著熱忱與對品質的堅持，決心建立這間特色馬卡龍店。我們不僅嚴選當季的新鮮食材，更注重於每一個細節，以手工製作出最完美的馬卡龍。這不僅僅是一種烘焙，更是對甜點藝術的完美詮釋。
+        </p>
+        <p class="mb-3">
+          誠摯地邀請您加入這趟甜蜜旅程，品嚐我們每一款用心製作的馬卡龍，感受法式甜點帶來的美好和滿足。
+        </p>
+        <hr class="d-block d-lg-none" />
+        <router-link to="/products" class="btn btn-secondary"
+          >選產品<i class="bi bi-caret-right-fill"></i
+        ></router-link>
       </div>
     </div>
   </div>
+  <!-- 背景圖 -->
+  <div class="fixed-top h-100 w-100 aboutBackground"></div>
   <div class="bg-white overflow-hidden">
     <div class="container py-3 py-md-5">
       <h3 class="text-center fw-bolder text-primary-emphasis mb-3">

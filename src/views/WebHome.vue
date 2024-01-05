@@ -363,7 +363,7 @@
             class="text-center m-3"
             v-for="(delivery, key) in deliveryWays"
             :key="'delivery' + key"
-            data-aos="flip-right"
+            data-aos="zoom-out"
           >
             <div class="delivery">
               <img :src="delivery.image" :alt="delivery.way" />
