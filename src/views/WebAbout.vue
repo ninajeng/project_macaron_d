@@ -135,6 +135,9 @@
     background-color: transparent;
     padding: 0;
   }
+  .aboutBackground {
+    background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/nn_macaron/1704419980393.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=rIJEGV3nLxm9NbOY0FmKspH9DDmEexecc08YajR87ZPmYb5NzTPqi%2B3BpybFRhtQkn00%2FOo4oJCQEOD2V6BZgNbuhITtYUMgR21WJhaCmM3SyoTTRYhN%2F9orcYf5AXfW5xexNSarYHaokFQNNIHIKUGc%2Fxkf4M8jiR8e7LP1ADCHILpfYSLrBAkxW5DBscHClZ3s74qfoPUo%2BteNifsOOzbIRFlg9AWfVAMElIoX%2FaE29ct87HiL4w%2FRMCHP5qExsyHzJf3pXGlXvc0hjnSX6oFd0Y%2F9SuGwLzGtLa8RWVxUqpocYrSeAKjxtrP79U1XxrCnqXyiOToc5oJXTZU6yA%3D%3D);
+  }
 }
 </style>
 
