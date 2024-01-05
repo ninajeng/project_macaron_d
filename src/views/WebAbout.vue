@@ -106,6 +106,7 @@
   padding-bottom: 1rem;
 }
 .aboutBackground {
+  background-color: var(--bs-primary-bg-subtle);
   background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/nn_macaron/1703774961511.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=N5ohyoTS3IsOeZEZxiuWpV0YvGQUgK%2Fh0e%2FS96FTs37yPBjiWv4n68%2BGKHtnT%2FKChHkzc3L2I3dTAaDqKfI%2FsfvPg%2FdTPi4myfm6jXcs2Y26S%2BEiDZFQeeCGZcZiddAMQmvsmLKMV1de%2FooHWiO3JT6YU10Nkd5wZtAJDkDD0x76C3s%2FSzqd%2BXX1uY6afpAX1mLz9ImXioEtFGlj3bEXdQKxlNAcSTWWeafRE2AYcXFKA2gl%2FY2XEOt7k2zwYq26J7k2jmltZsTnO%2Fq9k3JDdaZ2QPNuaMQpvLRAgYOnC4GVIlD1zIkkdhJmVRQwcFOUqJFNKCf8EVDdGoz3o2LhaQ%3D%3D);
   background-repeat: no-repeat;
   background-position: center center;
